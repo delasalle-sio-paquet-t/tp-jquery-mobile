@@ -3,7 +3,25 @@
 <head>
 <meta charset="utf-8">
 <title>BTS SIO</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimun-scale=1, maximum-scale=1"
+<meta name="viewport" content="width=device-width, initial-scale=1, minimun-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<script>
+	$(document).bind("pageinit", function()
+	{
+		$("#btnInformation").click(function()
+		{
+			$.mobile.changePage("#affichage_message_information", {transition : "flip"});	
+		});
+		
+		$("#btnAvertissement").click(function()
+				{
+					$.mobile.changePage("#affichage_message_avertissement", {transition : "flip"});	
+				});
+	});
+</script>
 </head>
 <body>
 	<div data-role="page" id="page_principale">
@@ -24,6 +42,30 @@
 		
 		<div data-role="footer" data-position="fixed" data-theme="a">
 			<h4>Annuaire des anciens du BTS Informatique<br>Lycée De La Salle (Rennes)</h4>
+		</div>
+	</div>
+	<div data-role="dialog" id="affichage_message_information" data-close-btn="none">
+		<div data-role="header" data-theme="a">
+			<h3>Informations</h3>
+		</div>
+		<div data-role="content">
+			<p style="text-align: center;"><img src="../images/information.png" class="image"/></p>
+			<p style="text-align: center;">Ceci est un message d'information</p>
+		</div>
+		<div data-role="footer" class="ui-bar" data-theme="a">
+			<a href="#page_principale" data-transition="flip">Fermer</a>
+		</div>
+	</div>
+	<div data-role="dialog" id="affichage_message_avertissement" data-close-btn="none">
+		<div data-role="header" data-theme="a">
+			<h3>Avertissement</h3>
+		</div>
+		<div data-role="content">
+			<p style="text-align: center;"><img src="../images/avertissement.png" class="image"/></p>
+			<p style="text-align: center;">Ceci est un message d'avertissement</p>
+		</div>
+		<div data-role="footer" class="ui-bar" data-theme="a">
+			<a href="#page_principale" data-transition="flip">Fermer</a>
 		</div>
 	</div>
 </body>

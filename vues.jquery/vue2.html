@@ -12,8 +12,8 @@
 	$(document).bind('pageinit', function()
 	{
 		$("#caseAfficherMdp").click(afficherMdp);
-		
-		$("#formModifcationMdp").submit(validationGenerale);
+
+		$("#formModificationMdp").submit(validationGenerale);
 	});
 	
 	function afficherMdp()
@@ -47,7 +47,7 @@
 	
 	function estUnMdpCorrect(leMdpAtester)
 	{
-		EXPRESSION ="#^(.*[0-9].*[a-z].*[A-Z].*|.*[0-9].*[A-Z].*[a-z].*|.*[a-z].*[A-Z].*[0-9].*|.*[a-z].*[0-9].*[A-Z].*|.*[A-Z].*[0-9].*[a-z].*|.*[A-Z].*[a-z].*[0-9].*)$#";
+		$EXPRESSION = "#^(.*[0-9].*[a-z].*[A-Z].*|.*[0-9].*[A-Z].*[a-z].*|.*[a-z].*[A-Z].*[0-9].*|.*[a-z].*[0-9].*[A-Z].*|.*[A-Z].*[0-9].*[a-z].*|.*[A-Z].*[a-z].*[0-9].*)$#";
 		
 		monExprRegul = new RegExp(EXPRESSION);
 		
@@ -110,19 +110,20 @@
 		</div>
 		<div data-role="content">
 			<p style="text-align: center;"><img src="../images/information.png" class="image"/></p>
-			<p style="text-align: center;">Ceci est un message d'information</p>
+			<p id="texte_message_information" style="text-align: center;">Message d'information</p>
 		</div>
 		<div data-role="footer" class="ui-bar" data-theme="a">
 			<a href="#page_principale" data-transition="flip">Fermer</a>
 		</div>
 	</div>
+	
 	<div data-role="dialog" id="affichage_message_avertissement" data-close-btn="none">
 		<div data-role="header" data-theme="a">
 			<h3>Avertissement</h3>
 		</div>
 		<div data-role="content">
 			<p style="text-align: center;"><img src="../images/avertissement.png" class="image"/></p>
-			<p style="text-align: center;">Ceci est un message d'avertissement</p>
+			<p id="texte_message_avertissement" style="text-align: center;">Message d'avertissement</p>
 		</div>
 		<div data-role="footer" class="ui-bar" data-theme="a">
 			<a href="#page_principale" data-transition="flip">Fermer</a>

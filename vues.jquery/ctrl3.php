@@ -1,11 +1,11 @@
 <?php
-if (isset ($_Post["txtNouveauMdp"]) && !isset ($_POST["txtConfirmation"]))
+if (!isset ($_Post["txtNouveauMdp"]) && !isset ($_POST["txtConfirmation"]))
 {
-	$nouveauMdp ="";
-	$confirmation="";
-	$afficherMdp = "";
-	$message="";
-	$typeMessage="";
+	$nouveauMdp ='';
+	$confirmationMdp='';
+	$afficherMdp = 'off';
+	$message='';
+	$typeMessage='';
 	include_once("vue3.php");
 }
 else
@@ -16,15 +16,15 @@ else
 	if (empty($_POST["txtConfirmation"]) == true ) $confirmationMdp ="";
 	else $confirmationMdp = $_POST["txtConfirmation"];
 	
-	if (empty ($_POST["caseAfficherMdp"]) == true) $afficherMdp = "off";
+	if (empty ($_POST["caseAfficherMdp"]) == true) $afficherMdp = 'off';
 	else $afficherMdp=$_POST["caseAfficherMdp"];
 	
-	$EXPRESSION ="#^(.*[0-9].*[a-z].*[A-Z].*|.*[0-9].*[A-Z].*[a-z].*|.*[a-z].*[A-Z].*[0-9].*|.*[a-z].*[0-9].*[A-Z].*|.*[A-Z].*[0-9].*[a-z].*|.*[A-Z].*[a-z].*[0-9].*)$#";
+	$EXPRESSION = "#^(.*[0-9].*[a-z].*[A-Z].*|.*[0-9].*[A-Z].*[a-z].*|.*[a-z].*[A-Z].*[0-9].*|.*[a-z].*[0-9].*[A-Z].*|.*[A-Z].*[0-9].*[a-z].*|.*[A-Z].*[a-z].*[0-9].*)$#";
 
-	if (preg_match($EXPRESSION, $nouveauMdp) == false || $nouveauMdp.length < 8)
+	if (preg_match($EXPRESSION, $nouveauMdp) == false || strlen($nouveauMdp) < 8)
 	{
 		$message = "Le mot de passe doit comporter au moins 8 caractères, dont au moins une lettre minuscule, une lettre majuscule et un chiffre";
-		$typeMessage="avertissement";
+		$typeMessage='avertissement';
 		include_once ('vue3.php');
 	}
 	else 
@@ -32,7 +32,7 @@ else
 		if($nouveauMdp != $confirmationMdp)
 		{
 			$message="Le nouveau mot de passe et sa confirmation sont différents";
-			$typeMessage = "avertissement";
+			$typeMessage = 'avertissement';
 			include_once ('vue3.php');
 		}
 		else 
